@@ -1,15 +1,25 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Playfair_Display, Inter } from 'next/font/google'
 
 import './globals.css'
 
-const _geist = Geist({ subsets: ['latin'] })
-const _geistMono = Geist_Mono({ subsets: ['latin'] })
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-serif',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'The Self Bakery - Business Cards',
+  description: 'Premium business card designs for The Self Bakery. From mix to mastery.',
+}
+
+export const viewport: Viewport = {
+  themeColor: '#2c2420',
 }
 
 export default function RootLayout({
@@ -19,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }
